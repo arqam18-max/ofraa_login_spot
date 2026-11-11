@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs><pattern id="g" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M50 0H0V50" fill="none" stroke="#d5d5d5" stroke-width="1"/></pattern></defs>
+  <rect width="800" height="500" fill="#fafafa"/><rect width="800" height="500" fill="url(#g)"/>
+  <rect x="1" y="1" width="798" height="498" fill="none" stroke="#999" stroke-width="2"/>
+  <text x="400" y="250" font-size="26" text-anchor="middle" fill="#888" font-family="sans-serif">フロアマップ（仮）</text>
+  <text x="400" y="285" font-size="14" text-anchor="middle" fill="#aaa" font-family="sans-serif">フロアマップ登録機能ができると、実際の地図に置き換わります</text>
+</svg>

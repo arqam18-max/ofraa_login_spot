@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}施設内スポット管理｜OFRAA{% endblock %}
+{% block content %}
+<div class="title-row">
+  <h2 class="page-title" id="pageTitle">施設内スポット管理</h2>
+  <a class="btn btn-primary" href="{{ url_for('spot.spot_register') }}" id="registerBtn">＋ 新規登録</a>
+</div>
+{% if spots %}
+<table class="table" id="spotList">
+  <thead><tr><th>スポット名</th><th>種別</th><th>フロア</th><th>位置</th><th>写真</th><th>操作</th></tr></thead>
+  <tbody>
+  {% for s in spots %}
+    <tr>
+      <td>{{ s.name }}</td><td>{{ s.type }}</td><td>{{ s.floor_name }}</td>
+      <td>({{ s.pos_x }}, {{ s.pos_y }})</td><td>{{ s.photo_count }}枚</td>
+      <td>
+        <button class="btn btn-small" disabled title="編集機能は未実装">編集</button>
+        <button class="btn btn-small btn-danger" disabled title="削除機能は未実装">削除</button>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p class="muted">登録済みのスポットはありません。「新規登録」から追加してください。</p>
+{% endif %}
+{% endblock %}

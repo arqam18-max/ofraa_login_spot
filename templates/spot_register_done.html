@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}登録完了｜OFRAA{% endblock %}
+{% block content %}
+<div class="card confirm-card">
+  <div class="done-mark">✓</div>
+  <h2 id="pageTitle">スポット情報を登録しました</h2>
+  <table class="kv">
+    <tr><th>スポット名</th><td>{{ spot.name }}</td></tr>
+    <tr><th>種別</th><td>{{ spot.type }}</td></tr>
+    <tr><th>フロア</th><td>{{ spot.floor_name }}</td></tr>
+  </table>
+  <div class="btn-row">
+    <a class="btn btn-outline" href="{{ url_for('spot.spot_register') }}" id="nextRegisterBtn">続けて登録する</a>
+    <a class="btn btn-primary" href="{{ url_for('spot.spot_list') }}" id="backBtn">スポット管理へ戻る</a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+:root { --blue:#2f6fe0; --red:#d85a30; --line:#ccc; --bg:#f5f7fa; }
+* { box-sizing: border-box; }
+body { margin:0; font-family: "Hiragino Sans","Meiryo",sans-serif; background:var(--bg); color:#222; }
+.nav { display:flex; align-items:center; gap:24px; background:#fff; border-bottom:1px solid var(--line); padding:10px 24px; }
+.nav .logo { font-weight:700; }
+.nav nav { display:flex; gap:16px; flex:1; }
+.nav nav a { text-decoration:none; color:#333; padding:6px 4px; }
+.nav nav a.active { color:var(--blue); border-bottom:2px solid var(--blue); font-weight:700; }
+.container { max-width:880px; margin:24px auto; padding:0 16px; }
+.page-title { margin:0 0 16px; padding:10px 14px; background:#e6eef9; border-radius:6px; font-size:20px; }
+.title-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+.title-row .page-title { flex:1; margin:0 12px 0 0; }
+.card { background:#fff; border:1px solid var(--line); border-radius:10px; padding:24px; }
+.login-card { max-width:380px; margin:48px auto; }
+.login-card h1 { text-align:center; margin:0 0 4px; }
+.login-card h2 { text-align:center; font-size:16px; color:#555; margin:0 0 16px; }
+.confirm-card { max-width:520px; margin:32px auto; text-align:center; }
+label { display:block; margin:14px 0 4px; font-weight:700; font-size:14px; }
+input[type=text], input[type=password], select, textarea { width:100%; padding:9px 10px; border:1px solid #999; border-radius:6px; font-size:14px; font-family:inherit; background:#fff; }
+.req { background:var(--red); color:#fff; font-size:11px; padding:1px 6px; border-radius:8px; margin-left:6px; }
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.field-error { color:var(--red); font-size:13px; min-height:18px; margin-top:2px; }
+.alert { padding:10px 14px; border-radius:6px; margin-bottom:12px; }
+.alert-error { background:#fcebeb; color:#a32d2d; border:1px solid #f0b9b9; }
+.alert-info { background:#e6f1fb; color:#185fa5; border:1px solid #b9d4ee; }
+.btn { display:inline-block; padding:9px 18px; border-radius:6px; border:1px solid var(--blue); background:#fff; color:var(--blue); font-size:14px; font-weight:700; cursor:pointer; text-decoration:none; }
+.btn-primary { background:var(--blue); color:#fff; }
+.btn-danger { background:var(--red); border-color:var(--red); color:#fff; }
+.btn-outline { background:#fff; color:var(--blue); }
+.btn-block { display:block; width:100%; margin-top:16px; }
+.btn-small { padding:4px 10px; font-size:12px; }
+.btn[disabled] { opacity:.45; cursor:not-allowed; }
+.btn-row { display:flex; gap:12px; justify-content:center; margin-top:20px; }
+form#spotForm .btn-row { justify-content:flex-start; }
+.table { width:100%; border-collapse:collapse; background:#fff; }
+.table th, .table td { border:1px solid var(--line); padding:8px 10px; text-align:left; font-size:14px; }
+.table th { background:#e8e8e8; }
+.tiles { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:16px; }
+.tile { display:block; background:#fff; border:2px solid var(--blue); border-radius:10px; padding:28px 16px; text-align:center; font-weight:700; text-decoration:none; color:#222; }
+.tile small { display:block; font-weight:400; color:#666; margin-top:6px; }
+.tile.disabled { border-color:#ccc; color:#999; }
+.muted { color:#666; font-size:13px; }
+.map-area { margin-top:8px; }
+.map-wrap { position:relative; display:inline-block; max-width:100%; border:1px solid #999; cursor:crosshair; }
+.map-wrap img { display:block; max-width:100%; height:auto; }
+.marker { position:absolute; width:18px; height:18px; margin:-9px 0 0 -9px; border-radius:50%; background:#e03030; border:2px solid #fff; box-shadow:0 0 0 1px #e03030; pointer-events:none; }
+.preview { display:flex; gap:8px; flex-wrap:wrap; margin-top:6px; }
+.preview img { width:90px; height:70px; object-fit:cover; border:1px solid #bbb; border-radius:4px; }
+.kv { margin:12px auto; border-collapse:collapse; }
+.kv th, .kv td { border:1px solid var(--line); padding:8px 14px; }
+.kv th { background:#e8e8e8; }
+.done-mark { width:56px; height:56px; line-height:56px; margin:0 auto 8px; border-radius:50%; background:#e1f5ee; color:#1d9e75; font-size:28px; font-weight:700; }

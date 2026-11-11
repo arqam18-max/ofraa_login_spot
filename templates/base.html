@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}OFRAA{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+{% if session.get('admin_id') %}
+<header class="nav">
+  <span class="logo">OFRAA 管理画面</span>
+  <nav>
+    <a href="{{ url_for('menu.menu') }}" {% if request.endpoint == 'menu.menu' %}class="active"{% endif %}>メインメニュー</a>
+    <a href="{{ url_for('spot.spot_list') }}" {% if request.endpoint and request.endpoint.startswith('spot.') %}class="active"{% endif %}>スポット管理</a>
+  </nav>
+  <span class="user">👤 {{ admin_name }}</span>
+  <a class="btn btn-outline" href="{{ url_for('login.logout') }}" id="logoutBtn">ログアウト</a>
+</header>
+{% endif %}
+<main class="container">
+  {% with messages = get_flashed_messages() %}
+    {% for m in messages %}<div class="alert alert-info">{{ m }}</div>{% endfor %}
+  {% endwith %}
+  {% block content %}{% endblock %}
+</main>
+{% block scripts %}{% endblock %}
+</body>
+</html>

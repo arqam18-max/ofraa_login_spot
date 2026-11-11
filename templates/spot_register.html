@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}施設内スポット登録｜OFRAA{% endblock %}
+{% block content %}
+<h2 class="page-title" id="pageTitle">FCSR001　施設内スポット登録</h2>
+<form id="spotForm" method="post" action="{{ url_for('spot.spot_register') }}" enctype="multipart/form-data" novalidate>
+  <input type="hidden" name="_csrf" value="{{ csrf_token }}">
+  <input type="hidden" id="posX" name="posX" value="{{ form.posX }}">
+  <input type="hidden" id="posY" name="posY" value="{{ form.posY }}">
+
+  {% if errors %}<div class="alert alert-error" id="errorMsg">入力内容を確認してください。</div>{% endif %}
+
+  <label for="spotName">スポット名 <span class="req">必須</span></label>
+  <input type="text" id="spotName" name="spotName" maxlength="{{ name_max }}" placeholder="スポット名" value="{{ form.spotName }}">
+  <div class="field-error" data-for="spotName">{{ errors.get('spotName', '') }}</div>
+
+  <div class="two-col">
+    <div>
+      <label for="typeSelect">種別 <span class="req">必須</span></label>
+      <select id="typeSelect" name="typeSelect">
+        <option value="">種別を選択</option>
+        {% for t in spot_types %}<option value="{{ t }}" {% if form.typeSelect == t %}selected{% endif %}>{{ t }}</option>{% endfor %}
+      </select>
+      <div class="field-error" data-for="typeSelect">{{ errors.get('typeSelect', '') }}</div>
+    </div>
+    <div>
+      <label for="floorSelect">フロア <span class="req">必須</span></label>
+      <select id="floorSelect" name="floorSelect">
+        <option value="">フロアを選択</option>
+        {% for f in floors %}<option value="{{ f.id }}" {% if form.floorSelect == f.id|string %}selected{% endif %}>{{ f.name }}</option>{% endfor %}
+      </select>
+      <div class="field-error" data-for="floorSelect">{{ errors.get('floorSelect', '') }}</div>
+    </div>
+  </div>
+
+  <label>位置 <span class="req">必須</span></label>
+  <button type="button" class="btn btn-outline btn-block" id="positionBtn">位置（マップをクリックして指定）</button>
+  <div id="mapArea" class="map-area" hidden>
+    <p class="muted" id="mapHint">フロアを選んでから、登録したい地点をクリックしてください。</p>
+    <div class="map-wrap" id="mapWrap">
+      <img id="mapImg" alt="フロアマップ">
+      <span id="marker" class="marker" hidden></span>
+    </div>
+  </div>
+  <div class="muted" id="posText"></div>
+  <div class="field-error" data-for="position">{{ errors.get('position', '') }}</div>
+
+  <label for="detail">詳細・説明</label>
+  <textarea id="detail" name="detail" rows="3" maxlength="{{ detail_max }}" placeholder="設備や利用上の注意などを入力">{{ form.detail }}</textarea>
+  <div class="field-error" data-for="detail">{{ errors.get('detail', '') }}</div>
+
+  <label for="photoFile">写真（最大{{ max_files }}枚・jpg/png・1枚5MBまで）</label>
+  <input type="file" id="photoFile" name="photoFile" accept=".jpg,.jpeg,.png,image/jpeg,image/png" multiple>
+  <div class="field-error" data-for="photoFile">{{ errors.get('photoFile', '') }}</div>
+  <div id="preview" class="preview"></div>
+
+  <div class="btn-row">
+    <button type="submit" class="btn btn-primary" id="registerBtn">登録する</button>
+    <a class="btn btn-danger" id="cancelBtn" href="{{ url_for('spot.spot_list') }}">キャンセル</a>
+  </div>
+</form>
+{% endblock %}
+{% block scripts %}
+<script>
+  window.OFRAA = { floors: {{ floors_json|tojson }}, maxFiles: {{ max_files }}, maxSize: 5 * 1024 * 1024, nameMax: {{ name_max }}, detailMax: {{ detail_max }} };
+</script>
+<script src="{{ url_for('static', filename='js/spot_register.js') }}"></script>
+{% endblock %}

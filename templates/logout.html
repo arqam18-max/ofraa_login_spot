@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}ログアウト｜OFRAA{% endblock %}
+{% block content %}
+<div class="card confirm-card">
+  <h2 id="pageTitle">ログアウトしますか？</h2>
+  <p>ログアウトするとログイン画面に戻ります。</p>
+  <form method="post" action="{{ url_for('login.logout') }}" class="btn-row">
+    <input type="hidden" name="_csrf" value="{{ csrf_token }}">
+    <a class="btn btn-outline" href="{{ url_for('menu.menu') }}" id="backBtn" onclick="if (document.referrer) { history.back(); return false; }">戻る</a>
+    <button type="submit" class="btn btn-primary" id="confirmBtn">ログアウトする</button>
+  </form>
+</div>
+{% endblock %}

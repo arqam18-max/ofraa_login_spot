@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}メインメニュー｜OFRAA{% endblock %}
+{% block content %}
+<h2 class="page-title" id="pageTitle">メインメニュー</h2>
+<p>ようこそ、{{ admin_name }} さん。管理する項目を選んでください。</p>
+<div class="tiles">
+  <a class="tile" href="{{ url_for('spot.spot_list') }}">施設内スポット管理<small>登録・一覧</small></a>
+  <span class="tile disabled">フロア管理<small>準備中</small></span>
+  <span class="tile disabled">通路管理<small>準備中</small></span>
+  <span class="tile disabled">パネル管理<small>準備中</small></span>
+</div>
+{% endblock %}

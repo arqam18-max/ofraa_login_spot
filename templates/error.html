@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}エラー｜OFRAA{% endblock %}
+{% block content %}
+<div class="card confirm-card">
+  <h2 id="pageTitle">エラー（{{ code }}）</h2>
+  <p>{{ message }}</p>
+  <a class="btn btn-primary" href="{{ url_for('login.index') }}">トップへ戻る</a>
+</div>
+{% endblock %}

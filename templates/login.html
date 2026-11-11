@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}ログイン｜OFRAA{% endblock %}
+{% block content %}
+<div class="card login-card">
+  <h1 id="logo">OFRAA</h1>
+  <h2 id="pageTitle">管理者ログイン</h2>
+  {% if error %}<div class="alert alert-error" id="errorMsg">{{ error }}</div>{% endif %}
+  <form method="post" action="{{ url_for('login.login') }}" novalidate>
+    <input type="hidden" name="_csrf" value="{{ csrf_token }}">
+    <label for="loginId">ID</label>
+    <input type="text" id="loginId" name="loginId" value="{{ login_id or '' }}" autocomplete="username" autofocus>
+    <label for="password">パスワード</label>
+    <input type="password" id="password" name="password" autocomplete="current-password">
+    <button type="submit" class="btn btn-primary btn-block" id="loginBtn">ログイン</button>
+  </form>
+</div>
+{% endblock %}
